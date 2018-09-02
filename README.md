@@ -40,8 +40,8 @@ docker run --name utube
 -e DB_USER=root
 -e DB_PASSWORD=your_db_passwd
 -e LANG=en
--p 80:80
--p 443:443
+-p 80:10080
+-p 443:10443
 -d leejoneshane/youphptube
 ```
 You may want to change the default language, use the parameters -e LANG=your_country.
