@@ -59,6 +59,6 @@ RUN apk update  \
 
 ADD ja.php /var/www/localhost/htdocs/locale
 
-VOLUME ["/var/www/localhost/htdocs/videos", "/var/www/localhost/htdocs/encoder/videos"]
+# VOLUME ["/var/www/localhost/htdocs/videos", "/var/www/localhost/htdocs/encoder/videos"]
 EXPOSE ${HTTP_PORT} ${HTTPS_PORT}
 CMD ["docker-entrypoint.sh"]
