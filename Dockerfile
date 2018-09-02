@@ -23,7 +23,7 @@ RUN apk update  \
     && mkdir /run/apache2 \
     && sed -ri \
            -e 's!^(\s*CustomLog)\s+\S+!\1 /proc/self/fd/1!g' \
-           -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g' \
+           -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/1!g' \
            -e 's!^#(LoadModule rewrite_module .*)$!\1!g' \
            -e 's!^(\s*AllowOverride) None.*$!\1 All!g' \
            -e 's!^(\s*Listen) 80.*$!\1 '${HTTP_PORT}'!g' \
@@ -56,6 +56,8 @@ RUN apk update  \
     && mkdir encoder/videos \
     && chmod 777 encoder/videos \
     && chown -R apache:apache /var/www
+
+ADD ja.php /var/www/localhost/htdocs/locale
 
 VOLUME ["/var/www/localhost/htdocs/videos", "/var/www/localhost/htdocs/encoder/videos"]
 EXPOSE ${HTTP_PORT} ${HTTPS_PORT}
