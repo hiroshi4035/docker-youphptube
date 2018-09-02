@@ -23,7 +23,7 @@ RUN apk update  \
     && mkdir /run/apache2 \
     && sed -ri \
            -e 's!^(\s*CustomLog)\s+\S+!\1 /proc/self/fd/1!g' \
-           -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/1!g' \
+           -e 's!^(\s*ErrorLog)\s+\S+!\1 /var/www/logs/error.log!g' \
            -e 's!^#(LoadModule rewrite_module .*)$!\1!g' \
            -e 's!^(\s*AllowOverride) None.*$!\1 All!g' \
            -e 's!^(\s*Listen) 80.*$!\1 '${HTTP_PORT}'!g' \
